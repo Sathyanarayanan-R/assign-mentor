@@ -15,7 +15,7 @@ router.route("/create").post((req, res) => {
     });
 
     newStudent.save()
-        .then(() => res.status(200).json("Student Created Successfully!"))
+        .then(() => res.status(200).json({message: "Student Created Successfully!"}))
         .catch(err => {
             res.status(400).json('Error: ' + err);
         });
@@ -33,7 +33,7 @@ router.route("/:id/addmentor").put((req, res) => {
             student.mentorid = mentorId;
 
             student.save()
-                .then(() => res.status(200).json(`Assigned/Updated a Mentor for Student ${student.name}`))
+                .then(() => res.status(200).json({message: `Assigned/Updated a Mentor for Student ${student.name}`}))
                 .catch(err => {
                     res.status(400).json('Error: ' + err);
                 });
